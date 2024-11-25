@@ -1,4 +1,5 @@
-let contentGridElement = document.getElementById('mainGrid');
+let contentGridElement = document.getElementById("mainGrid");
+let carouselGridElement = document.getElementById("carouselGrid");
 
 let jsonDatabase = [
   {
@@ -75,36 +76,60 @@ let jsonDatabase = [
   },
 ];
 
-for (let i=0; i<jsonDatabase.length; i++){
+for(let i=0; i<jsonDatabase.length; i++){
   createElementProper(jsonDatabase[i]);
+  if(parseFloat(jsonDatabase[i]["rating"]) >= 4.8){
+    addToCarousel(jsonDatabase[i]);
+  }
 }
 
 function createElementProper(incomingJSON){
-  // Create a container for each content item
   let newContentElement = document.createElement("DIV");
   newContentElement.classList.add("contentItem");
 
-  // Title
   let newTitle = document.createElement("H3");
   newTitle.innerText = incomingJSON['title'];
   newContentElement.appendChild(newTitle);
 
-  // Genre
   let newGenre = document.createElement("P");
   newGenre.innerText = `Genre: ${incomingJSON['genre']}`;
   newContentElement.appendChild(newGenre);
 
-  // Rating
   let newRating = document.createElement("P");
   newRating.innerText = `Rating: ${incomingJSON['rating']}`;
   newContentElement.appendChild(newRating);
 
-  // Image
   let newImage = document.createElement("IMG");
   newImage.classList.add("footerImage");
   newImage.src = incomingJSON['image'];
   newContentElement.appendChild(newImage);
 
-  // Append to the grid
   contentGridElement.appendChild(newContentElement);
 }
+
+function addToCarousel(incomingJSON){
+  let newSlide = document.createElement("LI");
+  newSlide.classList.add("glide__slide");
+
+  let newImage = document.createElement("IMG");
+  newImage.src = incomingJSON["image"];
+  newImage.alt = incomingJSON["title"];
+  newSlide.appendChild(newImage);
+
+  let newCaption = document.createElement("DIV");
+  newCaption.innerText = `${incomingJSON["title"]} - ${incomingJSON["genre"]}`;
+    newCaption.style.textAlign = "center"; 
+    newSlide.appendChild(newCaption);
+
+  carouselGridElement.appendChild(newSlide);
+}
+
+new Glide('.glide', {
+    type: 'carousel',  
+    startAt: 0,        
+    perView: 3,        
+    gap: 20,           
+    focusAt: 'center', 
+    autoplay: 3000,    
+    hoverpause: true   
+}).mount();

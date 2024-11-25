@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fav Webcomics</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" integrity="sha256-Ev8y2mML/gGa4LFVZgNpMTjKwj34q4pC4DcseWeRb9w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css" integrity="sha256-lLVZFuQvIA73KThLtKb9LNLvKztQLq+xr7XHTFXLJek=" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -14,7 +16,17 @@
     <h3 id="subTitle">♥ ♥ ♥</h3>
 
     <br><br>
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides" id="carouselGrid"></ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">PREV</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">NEXT</button>
+        </div>
+    </div>
     <div id="mainGrid"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script src="script.js"></script>
 </body>
 
