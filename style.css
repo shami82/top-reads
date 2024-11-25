@@ -137,5 +137,6 @@ p{
 .glide__arrows button:hover{
     background-color: #555;
     cursor: pointer;
+    opacity: 0.8;
 }
 
